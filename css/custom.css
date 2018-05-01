@@ -1,0 +1,36 @@
+/*
+    *   This resets saved password field yellowish color
+    *   important cause yellow yellow dirty fellow
+*/
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset !important;
+}
+
+.bootstrap-tagsinput{
+    border-bottom: 1px solid #32424b;
+}
+
+.bootstrap-tagsinput input{
+    background-color: #2b3942;
+    border: none;
+    margin: 10px 0px;
+}
+
+.bootstrap-tagsinput input::placeholder{
+    color: rgba(177,188,192,.47);
+}
+
+.label-info{
+    background-color: #d9dee0;
+}
+
+.label {
+    display: inline-block;
+    padding: 5px 15px;
+    font-size: 85%;
+    font-weight: 500;
+    color: #2b3942;
+    vertical-align: baseline;
+    border-radius: .25em;
+    margin: 10px 0px;
+}
