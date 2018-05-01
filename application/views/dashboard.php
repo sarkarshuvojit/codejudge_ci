@@ -20,7 +20,7 @@
 
 <section id="main">
 
-	<?php $this->load->view('sub-views/sidebar.php') ?>
+	<?php $this->load->view('sub-views/sidebar_student.php') ?>
 
 	<section id="content">
 		<div class="content__header">
@@ -37,7 +37,7 @@
 					<thead>
 					<tr>
 						<th data-column-id="id" data-type="numeric">#</th>
-						<th data-column-id="by">By</th>
+<!--						<th data-column-id="by">By</th>-->
 						<th data-column-id="title">Problem</th>
 						<th data-column-id="status">Status</th>
 						<th data-column-id="commands" data-formatter="commands" data-sortable="false">Commands</th>
@@ -52,10 +52,9 @@
 					foreach ($runs->result() as $run)
 					{?>
 					<tr>
-							<td><?= $run->id ?></td>
-                    <td><?= $run->runner ?></td>
-                    <td><?= $run->title ?></td>
-                    <td><?= $run->status ?></td>
+                        <td><?= $run->id ?></td>
+                        <td><?= $run->title ?></td>
+                        <td><?= $run->status ?></td>
                     </tr>
                     <?php
 					}

@@ -31,7 +31,7 @@
 
 <section id="main">
 
-	<?php $this->load->view('sub-views/sidebar.php') ?>
+	<?php $this->load->view('sub-views/sidebar_student.php') ?>
     <form action="/solution.do" method="post" id="code_form">
         <div class="card">
             <div class="card__header">

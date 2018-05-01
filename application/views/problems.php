@@ -32,7 +32,7 @@
 
 <section id="main">
 
-	<?php $this->load->view('sub-views/sidebar.php') ?>
+	<?php $this->load->view('sub-views/sidebar_student.php') ?>
 
 	<section id="content">
 		<div class="content__header">
@@ -68,7 +68,7 @@
 							<td><?= $problem->id ?></td>
 							<td><?= $problem->title ?></td>
 							<td><?= $problem->difficulty ?></td>
-							<td><?= $problem->creator ?></td>
+							<td><?= $problem->name ?></td>
 						</tr>
 
 						<?php

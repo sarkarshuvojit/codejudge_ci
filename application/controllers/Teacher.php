@@ -23,6 +23,7 @@ class Teacher extends CI_Controller {
 
 	public function login_do() {
 		if ($this->Teacher_Model->check_login($_POST)) {
+			$this->session->set_userdata('teacher_email', $_POST['email']);
 			redirect('teacher/dashboard');
 		} else {
 			$this->session->set_flashdata('fail', true);
@@ -31,7 +32,11 @@ class Teacher extends CI_Controller {
 	}
 
 	public function dashboard(){
-		$this->load->view('add.php', []);
+		$teacher_email = $this->session->userdata()['teacher_email'];
+
+		$this->load->view('add.php', [
+			'teacher_email' => $teacher_email
+		]);
 	}
 
 

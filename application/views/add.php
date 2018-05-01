@@ -18,7 +18,7 @@
 
 <section id="main">
 
-	<?php $this->load->view('sub-views/sidebar.php') ?>
+	<?php $this->load->view('sub-views/sidebar_teacher.php') ?>
 
     <div class="card">
         <div class="card__header">
@@ -31,13 +31,9 @@
             <div class="row">
                 <div class="col-sm-12">
 
-                    <form action="add.do" method="post" enctype="multipart/form-data">
+                    <form action="<?=base_url('add.do')?>" method="post" enctype="multipart/form-data">
 
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your name" name="creator" id="creator"
-                                   required>
-                            <i class="form-group__bar"></i>
-                        </div>
+                        <input type="hidden" value="<?=$teacher_email?>" name="creator" >
 
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Title" name="title" id="title"

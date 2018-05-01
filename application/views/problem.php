@@ -1,8 +1,3 @@
-<?php
-//include '../helper/__init__.php';
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <!--[if IE 9 ]>
@@ -30,7 +25,7 @@
 
 <section id="main">
 
-	<?php $this->load->view('sub-views/sidebar.php') ?>
+	<?php $this->load->view('sub-views/sidebar_student.php') ?>
     <form action="/solution.do" method="post" id="code_form">
         <div class="card">
             <div class="card__header">
@@ -41,7 +36,7 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Your name" name="solver" id="solver"
+                        <input type="hidden" class="form-control" placeholder="Your name" name="solver" id="solver" value="<?=$student_email?>"
                                required>
                         <i class="form-group__bar"></i>
                     </div>
@@ -107,7 +102,6 @@ class Solution {
     1: When using java, class cannot be public and classname should be Solution
     2: C/C++ users do not use TurboC logic and use getch(), conio.h is a non standard library is deprecated now.
     3: While taking input do not print stuff like "Enter a Number:" and while outputting data don't output text like "Answer:", output whatever is specified in the question.
-
     -->
 
 </section>

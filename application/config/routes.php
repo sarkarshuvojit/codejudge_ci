@@ -66,3 +66,8 @@ $route['teacher/register.do'] = 'Teacher/register_do';
 $route['teacher/login.do'] = 'Teacher/login_do';
 $route['teacher/dashboard'] = 'Teacher/dashboard';
 
+$route['student/login'] = 'Student/login_form';
+$route['student/register.do'] = 'Student/register_do';
+$route['student/login.do'] = 'Student/login_do';
+$route['student/dashboard'] = 'Student/dashboard';
+

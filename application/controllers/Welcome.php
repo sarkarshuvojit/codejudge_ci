@@ -33,18 +33,19 @@ class Welcome extends CI_Controller {
 		$problem = $query->result_array()[0];
 
 		$this->load->view('problem.php', [
-			'id'      => $id,
-			'problem' => $problem
+			'id'            => $id,
+			'problem'       => $problem,
+			'student_email' => $this->session->userdata()['student_email']
 		]);
 	}
 
 	// show result of a specific run
-	public function runs($id){
+	public function runs($id) {
 
 		$result = $this->db->query("select * from runs where id='$id'");
-		$run = $result->result_array()[0];
+		$run    = $result->result_array()[0];
 
-		$css = ($run['status']!="Accepted")?"color:#d32f2f":"color:#66BB6A";
+		$css = ($run['status'] != "Accepted") ? "color:#d32f2f" : "color:#66BB6A";
 
 		$this->load->view('runs.php', [
 			'run' => $run,
@@ -68,7 +69,7 @@ class Welcome extends CI_Controller {
 		$query .= join("','", array_values($values)) . "')";
 
 		$this->db->query($query);
-		header('location:/');
+		header('location:/teacher/dashboard');
 	}
 
 	// evaluate if code is correct or not
@@ -81,8 +82,8 @@ class Welcome extends CI_Controller {
 			'c_cpp' => 'cpp',
 		];
 
-		$code_dir = __DIR__."/../../code/";
-		$input_loc = $code_dir.'input.in';
+		$code_dir  = __DIR__ . "/../../code/";
+		$input_loc = $code_dir . 'input.in';
 
 		// generate filename using solver name and timestamp
 		$file_name_no_ext = $_POST['solver'] . time();
@@ -90,7 +91,6 @@ class Welcome extends CI_Controller {
 		$file_name = $file_name_no_ext . "." . $language_codes[$_POST['language']];
 		// concat code folder and filename to get file location
 		$file_loc = $code_dir . $file_name;
-
 
 
 		// open the code file in write mode
@@ -166,7 +166,7 @@ class Welcome extends CI_Controller {
 		}
 	}
 
-	public function test(){
+	public function test() {
 		$this->load->view('login.php', [
 
 		]);
