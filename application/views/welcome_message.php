@@ -1,89 +1,115 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+//include '../helper/__init__.php';
+
+?>
+
+
+<!DOCTYPE html>
 <html lang="en">
+<!--[if IE 9 ]>
+<html class="ie9"><![endif]-->
 <head>
-	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Codejudge - Choose portal</title>
 
-	<style type="text/css">
+	<?php $this->load->view('sub-views/head.php') ?>
 
-	::selection { background-color: #E13300; color: white; }
-	::-moz-selection { background-color: #E13300; color: white; }
+    <style>
+        #editor {
+            height: 200px;
+            font-size: 1em;
+        }
+    </style>
 
-	body {
-		background-color: #fff;
-		margin: 40px;
-		font: 13px/20px normal Helvetica, Arial, sans-serif;
-		color: #4F5155;
-	}
-
-	a {
-		color: #003399;
-		background-color: transparent;
-		font-weight: normal;
-	}
-
-	h1 {
-		color: #444;
-		background-color: transparent;
-		border-bottom: 1px solid #D0D0D0;
-		font-size: 19px;
-		font-weight: normal;
-		margin: 0 0 14px 0;
-		padding: 14px 15px 10px 15px;
-	}
-
-	code {
-		font-family: Consolas, Monaco, Courier New, Courier, monospace;
-		font-size: 12px;
-		background-color: #f9f9f9;
-		border: 1px solid #D0D0D0;
-		color: #002166;
-		display: block;
-		margin: 14px 0 14px 0;
-		padding: 12px 10px 12px 10px;
-	}
-
-	#body {
-		margin: 0 15px 0 15px;
-	}
-
-	p.footer {
-		text-align: right;
-		font-size: 11px;
-		border-top: 1px solid #D0D0D0;
-		line-height: 32px;
-		padding: 0 10px 0 10px;
-		margin: 20px 0 0 0;
-	}
-
-	#container {
-		margin: 10px;
-		border: 1px solid #D0D0D0;
-		box-shadow: 0 0 8px #D0D0D0;
-	}
-	</style>
 </head>
+
 <body>
 
-<div id="container">
-	<h1>Welcome to CodeIgniter!</h1>
+<div class="login">
+    <div class="login__block toggled" id="l-lockscreen">
+        <div class="login__block__header">
+            <img src="demo/img/profile-pics/1.jpg" alt="">
+            Please choose portal
+        </div>
 
-	<div id="body">
-		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
+        <div class="login__block__body">
 
-		<p>If you would like to edit this page you'll find it located at:</p>
-		<code>application/views/welcome_message.php</code>
 
-		<p>The corresponding controller for this page is found at:</p>
-		<code>application/controllers/Welcome.php</code>
+            <a href="teacher/login" class="btn btn--light m-t-15">Teacher <i class="zmdi zmdi-account"></i></a>
 
-		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
-	</div>
-
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
+            <a href="student/login" class="btn btn--light m-t-15">Student <i class="zmdi zmdi-accounts-alt"></i></a>
+        </div>
+    </div>
 </div>
+
+
+
+
+<!-- Older IE Warning -->
+<!--[if lt IE 9]>
+<div class="ie-warning">
+    <h1>Warning!!</h1>
+    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers
+        to access this website.</p>
+    <div class="ie-warning__container">
+        <ul class="ie-warning__download">
+            <li>
+                <a href="http://www.google.com/chrome/">
+                    <img src="img/browsers/chrome.png" alt="">
+                    <div>Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.mozilla.org/en-US/firefox/new/">
+                    <img src="img/browsers/firefox.png" alt="">
+                    <div>Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.opera.com">
+                    <img src="img/browsers/opera.png" alt="">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/safari/">
+                    <img src="img/browsers/safari.png" alt="">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                    <img src="img/browsers/ie.png" alt="">
+                    <div>IE (New)</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <p>Sorry for the inconvenience!</p>
+</div>
+<![endif]-->
+
+<!-- Javascript Libraries -->
+
+<!-- jQuery -->
+<script src="<?= base_url('') ?>vendors/bower_components/jquery/dist/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="<?= base_url('') ?>vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- Malihu ScrollBar -->
+<script src="<?= base_url('') ?>vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<!-- Bootstrap Notify -->
+<script src="<?= base_url('') ?>vendors/bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js"></script>
+
+<!-- Select 2 -->
+<script src="<?= base_url('') ?>vendors/bower_components/select2/dist/js/select2.full.min.js"></script>
+
+<script src="<?= base_url('ace/ace.js') ?>" type="text/javascript" charset="utf-8"></script>
+
 
 </body>
 </html>

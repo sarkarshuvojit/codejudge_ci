@@ -21,10 +21,7 @@ class Welcome extends CI_Controller {
 
 	// shows list of problems
 	public function index() {
-		$query = $this->db->query("select * from `problems`");
-		$this->load->view('problems.php', [
-			'problems' => $query
-		]);
+		$this->load->view('welcome_message.php');
 	}
 
 	// shows details of a specific problem and lets the user solve it
@@ -85,18 +82,23 @@ class Welcome extends CI_Controller {
 		$code_dir  = __DIR__ . "/../../code/";
 		$input_loc = $code_dir . 'input.in';
 
+//		die($code_dir);
+
 		// generate filename using solver name and timestamp
-		$file_name_no_ext = $_POST['solver'] . time();
+		$file_name_no_ext =  $language_codes[$_POST['language']] . time();
 		// attach file extension to the filename
 		$file_name = $file_name_no_ext . "." . $language_codes[$_POST['language']];
 		// concat code folder and filename to get file location
 		$file_loc = $code_dir . $file_name;
 
+//		die($file_loc);
 
 		// open the code file in write mode
 		$file = fopen($file_loc, 'w');
 		// write the code into the file
 		fwrite($file, $_POST['code']);
+
+
 
 		// get problem id from POST variable
 		$problemId = $_POST['problemid'];
@@ -130,7 +132,7 @@ class Welcome extends CI_Controller {
 		if ($_POST['language'] == 'java') {
 			exec("java -cp $code_dir Solution < $input_loc 2>&1", $execution_output, $execution_error);
 		} else {
-			exec("./../code/$file_name_no_ext < $input_loc 2>&1", $execution_output, $execution_error);
+			exec("$code_dir$file_name_no_ext < $input_loc 2>&1", $execution_output, $execution_error);
 		}
 
 		// If program fails to execute save run details into database and redirect

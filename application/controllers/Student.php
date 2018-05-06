@@ -11,11 +11,18 @@ class Student extends CI_Controller{
 	public function login_form() {
 		$data = [];
 		if($this->session->flashdata('fail'))
-			$data['fail'] = 'Email-password wrong';
+			$data['fail'] = $this->session->flashdata('message');
 		$this->load->view('login_student.php', $data);
 	}
 
 	public function register_do() {
+
+		if($this->Student_Model->is_registered($_POST['email'])){
+			$this->session->set_flashdata('fail', true);
+			$this->session->set_flashdata('message', 'Email and password do not match');
+			redirect("/student/login");
+		}
+
 		$this->Student_Model->register_student($_POST);
 
 		return redirect('/student/dashboard');
@@ -27,6 +34,7 @@ class Student extends CI_Controller{
 			redirect('student/dashboard');
 		} else {
 			$this->session->set_flashdata('fail', true);
+			$this->session->set_flashdata('message', 'Email and password do not match');
 			redirect("/student/login");
 		}
 	}
@@ -34,7 +42,7 @@ class Student extends CI_Controller{
 	public function problems(){
 		$teacher_email = $this->session->userdata()['teacher_email'];
 
-		$query = $this->db->query("select * from `problems` inner join `teacher` on `problems`.`creator` = `teacher`.`email`");
+		$query = $this->db->query("select `problems`.`id`, `problems`.`title`, `problems`.`difficulty`, `teacher`.`name` from `problems` inner join `teacher` on `problems`.`creator` = `teacher`.`email`");
 		$this->load->view('problems.php', [
 			'problems' => $query
 		]);

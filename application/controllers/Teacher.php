@@ -11,11 +11,18 @@ class Teacher extends CI_Controller {
 	public function login_form() {
 		$data = [];
 		if($this->session->flashdata('fail'))
-			$data['fail'] = 'Email-password wrong';
+			$data['fail'] = $this->session->flashdata('message');
 		$this->load->view('login.php', $data);
 	}
 
 	public function register_do() {
+
+		if($this->Teacher_Model->is_registered($_POST['email'])){
+			$this->session->set_flashdata('fail', true);
+			$this->session->set_flashdata('message', "Email already in use");
+			redirect("/teacher/login");
+		}
+
 		$this->Teacher_Model->register_teacher($_POST);
 
 		return redirect('/teacher/dashboard');
@@ -27,6 +34,7 @@ class Teacher extends CI_Controller {
 			redirect('teacher/dashboard');
 		} else {
 			$this->session->set_flashdata('fail', true);
+			$this->session->set_flashdata('message', "Email and password do not match");
 			redirect("/teacher/login");
 		}
 	}

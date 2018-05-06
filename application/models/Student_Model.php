@@ -12,5 +12,11 @@ class Student_Model extends CI_Model {
 		return $result->num_rows();
 	}
 
+	public function is_registered($email){
+		$result = $this->db->get_where('student', [
+			'email' => $email
+		]);
+		return $result->num_rows();
+	}
 
 }

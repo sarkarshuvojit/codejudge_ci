@@ -11,7 +11,7 @@
 		<ul>
 
 			<li class="navigation__menu">
-				<a href="/add"><i class="zmdi zmdi-code"></i> Add Problems</a>
+				<a href="/teacher/dashboard"><i class="zmdi zmdi-code"></i> Add Problems</a>
 			</li>
 
 		</ul>
