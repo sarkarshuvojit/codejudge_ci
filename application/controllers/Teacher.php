@@ -8,6 +8,7 @@
  */
 class Teacher extends CI_Controller {
 
+	// Shows the login forn
 	public function login_form() {
 		$data = [];
 		if($this->session->flashdata('fail'))
@@ -15,6 +16,7 @@ class Teacher extends CI_Controller {
 		$this->load->view('login.php', $data);
 	}
 
+	// checks if that email is registered already, else register new teacher
 	public function register_do() {
 
 		if($this->Teacher_Model->is_registered($_POST['email'])){
@@ -28,6 +30,7 @@ class Teacher extends CI_Controller {
 		return redirect('/teacher/dashboard');
 	}
 
+	// check login and redirect accordingly
 	public function login_do() {
 		if ($this->Teacher_Model->check_login($_POST)) {
 			$this->session->set_userdata('teacher_email', $_POST['email']);
@@ -39,6 +42,7 @@ class Teacher extends CI_Controller {
 		}
 	}
 
+	// show the form where teacher can add problems
 	public function dashboard(){
 		$teacher_email = $this->session->userdata()['teacher_email'];
 
